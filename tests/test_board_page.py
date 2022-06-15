@@ -18,7 +18,7 @@ def test_create_board(authorised_setup):
         authorised_setup.home_page.board_name_inp.send_data_by_xpath(board_data.BOARD_NAME)
     with allure.step("Create board"):
         authorised_setup.home_page.create_board_subm_btn.click_btn_by_xpath()
-    assert expected_result == authorised_setup.board_page.get_board_name_text(), ""
+    assert expected_result == authorised_setup.board_page.get_board_name_text(), "Board name not equal as expected"
 
 
 @allure.title("Test add new column to the Board:")
@@ -34,12 +34,12 @@ def test_add_column(authorised_setup):
     with allure.step("Click add column"):
         authorised_setup.board_page.add_new_column_subm_btn.click_btn_by_xpath()
     with allure.step("Assert quantity"):
-        assert expected_result == authorised_setup.board_page.get_quantity_boards(), ""
+        assert expected_result == authorised_setup.board_page.get_quantity_boards(), "Column name not equal as expected"
 
 
 @pytest.mark.skip("Skip test")
 @allure.title("Test rename created column on the Board:")
-@allure.severity(Severity.NORMAL)
+@allure.severity(Severity.MINOR)
 def test_rename_column(authorised_setup):
     expected_result = NEW_COLUMN_NAME
     with allure.step("Open board"):
@@ -47,7 +47,8 @@ def test_rename_column(authorised_setup):
     with allure.step("Click on column name"):
         authorised_setup.board_page.click_and_send_on_input(NEW_COLUMN_NAME)
     with allure.step("Assert new column name"):
-        assert expected_result == authorised_setup.board_page.get_column_name_text()
+        assert expected_result == authorised_setup.board_page.get_column_name_text(), \
+            "Column name not equal as expected"
 
 
 @allure.title("Test delete created column on the Board:")
@@ -82,5 +83,5 @@ def test_delete_board(authorised_setup):
         authorised_setup.board_page.delete_board_forever_btn.click_btn_by_xpath()
     with allure.step("Click Submit forever delete"):
         authorised_setup.board_page.submit_delete_board_forever_btn.click_btn_by_xpath()
-    with allure.step("Assert deleted board"):
+    with allure.step("Assert thet board is deleted"):
         assert expected_result == authorised_setup.home_page.get_quantity_boards()

@@ -9,13 +9,11 @@ class HomePage(BaseWrapper):
     """
 
     NAVBAR_USER_BTN_XPATH = "//button[@aria-label='Открыть меню участников']"
-
     CREATE_BOARD_BTN_XPATH = "//div[@class='board-tile mod-add']"
     BOARD_NAME_INP_XPATH = "//input[@data-test-id='create-board-title-input']"
     CREATE_BOARD_SUBMIT_BTN_XPATH = "//button[@data-test-id='create-board-submit-button']"
     TEST_BOARD_XPATH = "//div[@title='Test Board']"
     BOARDS_SECTION_XPATH = "//ul[@class='boards-page-board-section-list']/li"
-
     BOARDS_BTN_XPATH = "//a[@href='/testuservladskakun/boards']"
     WORKSPACES_BTN_XPATH = "//button[@aria-label='Рабочие пространства']"
     SECTION_HEADER_MENU_XPATH = "//section//li//span"
@@ -36,7 +34,7 @@ class HomePage(BaseWrapper):
     def click_section_header_menu_btn(self, btn_name):
         """
             Method for click checkboxes in 'More filters' menu depending on text value.
-            :param btn_name: It's parameter to select needed button.
+            param btn_name: It's parameter to select needed button.
         """
         elements = self.find_elements_by_xpath(self.SECTION_HEADER_MENU_XPATH)
         for element in elements:
@@ -46,7 +44,7 @@ class HomePage(BaseWrapper):
 
     def get_boards_button_text(self):
         """
-            Method for getting the text with login button.
+            Method for getting the text with boards button.
         """
         return self.find_element_by_xpath(self.BOARDS_BTN_XPATH).text
 
@@ -57,4 +55,7 @@ class HomePage(BaseWrapper):
         return self.find_element_by_xpath(self.EXIT_ATLASSIAN).text
 
     def get_quantity_boards(self):
+        """
+            Method for return quantity boards.
+        """
         return len(self.find_elements_by_xpath(self.BOARDS_SECTION_XPATH))

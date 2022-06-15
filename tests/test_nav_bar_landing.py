@@ -2,7 +2,6 @@
 import allure
 import pytest
 from allure_commons.types import Severity
-
 from tests.test_data import nav_bar_landing_test_data
 
 
@@ -16,8 +15,11 @@ def test_nav_bar_features_buttons(app, test_data):
     btn_name, subbtn_name, expected_result = test_data
     with allure.step("Go to site"):
         app.go_to_site()
+    with allure.step("Click tab on navigation menu"):
         app.navBar_landing.click_navbar_btn(btn_name)
+    with allure.step("Click tab on navigation submenu"):
         app.navBar_landing.click_navbar_subbtn(subbtn_name)
+    with allure.step("Assert open tab"):
         assert expected_result == app.navBar_landing.get_h1_text(), "Button doesn`t same as expected"
 
 

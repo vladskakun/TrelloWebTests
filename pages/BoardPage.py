@@ -1,7 +1,5 @@
 import time
-
 from selenium.webdriver import Keys
-
 from pages.common.BaseWrapper import BaseWrapper
 from pages.elements.ButtonElement import ButtonElement
 from pages.elements.InputElement import InputElement
@@ -9,7 +7,7 @@ from pages.elements.InputElement import InputElement
 
 class BoardPage(BaseWrapper):
     """
-        Locators and methods for landing page.
+        Locators and methods for Board page.
     """
 
     NAME_BOARD_XPATH = "//h1"
@@ -19,16 +17,13 @@ class BoardPage(BaseWrapper):
     CLOSE_BOARD_SUBMIT_BTN_XPATH = "//input[contains(@class,'nch-button--danger')]"
     DELETE_BOARD_FOREVER_BTN_XPATH = "//button[@data-test-id='close-board-delete-board-button']"
     SUBMIT_DELETE_BOARD_FOREVER_BTN_XPATH = "//button[@data-test-id='close-board-delete-board-confirm-button']"
-
     LISTS_ON_BOARD_XPATH = "//div[@class='list js-list-content']"
     ADD_NEW_COLUMN_XPATH = "//a[@class='open-add-list js-open-add-list']"
     COLUMN_NAME_INP_XPATH = "//input[@class='list-name-input']"
     ADD_NEW_COLUMN_SUBMIT_XPATH = "//input[contains(@class,'js-save-edit')]"
-
     RENAME_COLUMN_XPATH = "(//div/div[contains(@class,'js-editing-target')])[last()]"
     INPUT_RENAME_COLUMN_XPATH = "//textarea[contains(@class,'is-editing')]"
     NEW_NAME_COLUMN_XPATH = "(//div/textarea)[last()]"
-
     MENU_COLUMN_XPATH = "(//div/a[contains(@class,'icon-overflow-menu-horizontal')])[last()]"
     DELETE_COLUMN_MENU_OPTION_XPATH = "//li/a[@class='js-close-list']"
 
@@ -48,15 +43,20 @@ class BoardPage(BaseWrapper):
 
     def get_board_name_text(self):
         """
-            Method for getting the text with login button.
+            Method for getting board name text.
         """
         return self.find_element_by_xpath(self.NAME_BOARD_XPATH).text
 
     def get_column_name_text(self):
-        time.sleep(5)
+        """
+            Method for getting board name text.
+        """
         return self.find_element_by_xpath(self.NEW_NAME_COLUMN_XPATH).text
 
     def click_and_send_on_input(self, new_name):
+        """
+            Method for click on board name and write text on opened input.
+        """
         element = self.find_element_by_xpath(self.RENAME_COLUMN_XPATH)
         element.click()
         element = self.find_element_by_xpath(self.INPUT_RENAME_COLUMN_XPATH)
@@ -64,5 +64,8 @@ class BoardPage(BaseWrapper):
         element.send_keys(Keys.ENTER)
 
     def get_quantity_boards(self):
+        """
+            Method for return quantity boards.
+        """
         time.sleep(1)
         return len(self.find_elements_by_xpath(self.LISTS_ON_BOARD_XPATH))

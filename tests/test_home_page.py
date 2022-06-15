@@ -8,7 +8,7 @@ from tests.test_data import section_header_menu_data as section_data
 @allure.severity(Severity.NORMAL)
 def test_landing_logout(authorised_setup):
     """
-         Verify that user has the ability to login in as an Admin.
+         Verify that user has the ability to log out.
     """
     expected_result = "Log In"
     with allure.step("click header menu"):
