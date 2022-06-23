@@ -1,5 +1,3 @@
-import time
-
 from pages.common.BaseWrapper import BaseWrapper
 from pages.elements.ButtonElement import ButtonElement
 from pages.elements.InputElement import InputElement
@@ -39,7 +37,5 @@ class LandingPage(BaseWrapper):
         """
         self.email_inp.send_data_by_xpath(username)
         self.login_with_atlassian.click_btn_by_xpath()
-        # need wait for animation on the website
-        time.sleep(3)
         self.pass_inp.send_data_by_xpath(password)
         self.log_in_btn.click_btn_by_xpath()

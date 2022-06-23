@@ -1,4 +1,3 @@
-import time
 from selenium.webdriver import Keys
 from pages.common.BaseWrapper import BaseWrapper
 from pages.elements.ButtonElement import ButtonElement
@@ -67,5 +66,4 @@ class BoardPage(BaseWrapper):
         """
             Method for return quantity boards.
         """
-        time.sleep(1)
         return len(self.find_elements_by_xpath(self.LISTS_ON_BOARD_XPATH))

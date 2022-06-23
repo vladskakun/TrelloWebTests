@@ -1,4 +1,3 @@
-import time
 import config
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -45,7 +44,6 @@ class BaseWrapper:
         """
             Method for search elements by xpath selector with wait
         """
-        time.sleep(1)
         WebDriverWait(self.driver, timeout).until(EC.presence_of_all_elements_located((By.XPATH, locator)),
                                                   message=f"Can't find elements by locator {locator}")
         elements = self.driver.find_elements(By.XPATH, locator)
